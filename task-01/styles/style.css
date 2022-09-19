@@ -1,0 +1,148 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content {
+  padding: 0 50px;
+}
+
+.task-list {
+}
+
+.title-tasks {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.task {
+  display: grid;
+  grid: 1fr / repeat(4, 1fr) repeat(3, minmax(auto, 100px));
+  align-items: center;
+  border: 1px solid gray;
+  padding: 3px 8px;
+  margin: 10px 0;
+  background-color: #e8eaf5;
+}
+
+.task span {
+  margin: 0 20px;
+  width: 100%;
+}
+
+.task button {
+  margin-right: 10px;
+}
+
+.completed {
+  background-color: green;
+  color: white;
+}
+
+.completed p {
+  text-decoration: line-through;
+}
+
+.input-panel {
+  width: 100%;
+  margin: 8px 0;
+  padding: 2px;
+}
+
+.input-panel button {
+  padding: 4px;
+  width: 10%;
+}
+
+.input-panel input {
+  height: 23px;
+  padding-left: 4px;
+}
+
+#task-name-input {
+  width: 500px;
+}
+
+#task-category-input {
+  height: 27px;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: none;
+}
+
+.modal-body {
+  margin: auto;
+  background: white;
+  width: 500px;
+  height: 300px;
+  position: relative;
+  display: flex;
+}
+
+.close {
+  font-size: 20px;
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  color: black;
+}
+
+.modal-form {
+  margin: auto;
+}
+
+.modal-form input {
+  margin: 10px 0;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.modal-form select {
+  width: 100%;
+  padding: 5px;
+}
+
+.modal-form button {
+  width: 100%;
+  padding: 5px;
+}
+
+legend {
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.hidden {
+  width: 13px !important;
+  margin: 0 !important;
+}
+
+.titles {
+  background-color: #999999;
+  color: white;
+}
+
+.category-task {
+  display: grid;
+  grid: 1fr / repeat(3, 1fr);
+}
+
+.category-task > span {
+  background-color: #999999;
+  margin-top: 5px;
+  padding: 5px;
+  color: white;
+}

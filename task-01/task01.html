@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Task 01</title>
+  </head>
+
+  <body>
+    <div class="modal">
+      <div class="modal-body">
+        <div class="close">&times;</div>
+        <form class="modal-form">
+          <legend>Edit task</legend>
+          <select id="modal-category-input">
+            <option value="Task">Task</option>
+            <option value="Random Thought">Random Thought</option>
+            <option value="Idea">Idea</option>
+          </select>
+          <input type="text" id="modal-name-input" />
+          <input type="date" id="modal-date-input" />
+          <button class="btn-modal">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="title-tasks">All tasks</div>
+    <div class="content">
+      <div class="task titles">
+        <span>Category</span>
+        <span>Created</span>
+        <span>Content</span>
+        <span>Date</span>
+      </div>
+      <div class="task-list"></div>
+      <div class="input-panel">
+        <select id="task-category-input">
+          <option value="Task" default>Task</option>
+          <option value="Random Thought">Random Thought</option>
+          <option value="Idea">Idea</option>
+        </select>
+        <input type="text" id="task-name-input" />
+        <input type="date" id="task-date-input" />
+        <button id="add-task-btn">Create task</button>
+      </div>
+      <div class="input-panel">
+        <button id="show-all-btn">All task</button>
+        <button id="show-archived-btn">Archived task</button>
+      </div>
+
+      <div class="sum-table">
+        <div class="category-task">
+          <span>Note Category</span>
+          <span>Active</span>
+          <span>Atchived</span>
+        </div>
+        <div class="category-task">
+          <span>Task</span>
+          <span class="task-active">0</span>
+          <span class="task-archive">0</span>
+        </div>
+        <div class="category-task">
+          <span>Random Thought</span>
+          <span class="random-active">0</span>
+          <span class="random-archive">0</span>
+        </div>
+        <div class="category-task">
+          <span>Idea</span>
+          <span class="idea-active">0</span>
+          <span class="idea-archive">0</span>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>
