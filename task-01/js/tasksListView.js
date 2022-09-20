@@ -29,17 +29,6 @@ export default class TasksListView {
     this.#drawList(taskElements);
   }
 
-  drawNotCompleted() {
-    let taskElements = [];
-    let tasks = this.dataService.notCompletedTasks;
-    if (tasks.length == 0) return this.#drawList(taskElements);
-
-    tasks.forEach((task) => {
-      taskElements.push(new TaskView(task));
-    });
-    this.#drawList(taskElements);
-  }
-
   drawArchivedTask() {
     let taskElements = [];
     let tasks = dataService.archivedTask;
