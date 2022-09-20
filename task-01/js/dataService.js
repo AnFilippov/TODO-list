@@ -10,8 +10,8 @@ export let dataService = {
   },
 
   get notCompletedTasks() {
-    let complited = this.tasks.filter((task) => task.isDone == false);
-    return complited.filter((task) => task.isArchived == false);
+    let completed = this.tasks.filter((task) => task.isDone == false);
+    return completed.filter((task) => task.isArchived == false);
   },
 
   get archivedTask() {

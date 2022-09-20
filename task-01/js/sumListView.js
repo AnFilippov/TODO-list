@@ -10,16 +10,21 @@ export default class SumListView {
     this.dataService = dataService;
   }
 
-  #drawList(elem, elem2) {
-    this.element.innerHTML = elem;
-    this.elementTwo.innerHTML = elem2;
+  #drawList(taskElements) {
+    this.element.innerHTML = taskElements[0];
+    this.elementTwo.innerHTML = taskElements[1];
   }
 
   drawCategoryTask() {
     let tasks = dataService.categoryTask;
     let active;
     let archived;
-    if (tasks.lenght == 0) return (active = 0), (archived = 0);
+    let taskElements = [];
+    if (tasks.length == 0) {
+      taskElements.push(0, 0);
+      return this.#drawList(taskElements);
+    }
+
     active = 0;
     archived = 0;
     tasks.forEach((item) => {
@@ -30,15 +35,21 @@ export default class SumListView {
       }
       return active, archived;
     });
+    taskElements.push(active, archived);
+    console.log(taskElements);
 
-    this.#drawList(active, archived);
+    this.#drawList(taskElements);
   }
 
   drawCategoryRandom() {
     let tasks = dataService.categoryRandom;
     let active;
     let archived;
-    if (tasks.lenght == 0) return (active = 0), (archived = 0);
+    let taskElements = [];
+    if (tasks.length == 0) {
+      taskElements.push(0, 0);
+      return this.#drawList(taskElements);
+    }
     active = 0;
     archived = 0;
     tasks.forEach((item) => {
@@ -49,15 +60,20 @@ export default class SumListView {
       }
       return active, archived;
     });
+    taskElements.push(active, archived);
 
-    this.#drawList(active, archived);
+    this.#drawList(taskElements);
   }
 
   drawCategoryIdea() {
     let tasks = dataService.categoryIdea;
     let active;
     let archived;
-    if (tasks.lenght == 0) return (active = 0), (archived = 0);
+    let taskElements = [];
+    if (tasks.length == 0) {
+      taskElements.push(0, 0);
+      return this.#drawList(taskElements);
+    }
     active = 0;
     archived = 0;
     tasks.forEach((item) => {
@@ -68,7 +84,8 @@ export default class SumListView {
       }
       return active, archived;
     });
+    taskElements.push(active, archived);
 
-    this.#drawList(active, archived);
+    this.#drawList(taskElements);
   }
 }

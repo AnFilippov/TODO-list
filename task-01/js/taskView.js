@@ -27,10 +27,6 @@ export class TaskView {
     let category = document.createElement("span");
     category.innerText = this.category;
 
-    // let input = document.createElement("input");
-    // input.addEventListener("click", this.changeState.bind(this));
-    // input.type = "checkbox";
-
     let time = document.createElement("span");
     time.innerText = this.time;
 
@@ -59,7 +55,6 @@ export class TaskView {
     del.innerText = "delete";
     del.addEventListener("click", this.delete.bind(this));
 
-    // this.div.append(input);
     this.div.append(category);
     this.div.append(time);
     this.div.append(p);
@@ -68,19 +63,13 @@ export class TaskView {
     this.div.append(archive);
     this.div.append(del);
 
-    // if (this.task.isDone) {
-    //   this.div.classList.add("completed");
-    //   input.checked = true;
-    // }
+    if (this.task.isArchived) {
+      archive.innerText = "unarchive";
+      edit.style.display = "none";
+    }
+
     element.append(this.div);
   }
-
-  // changeState(element) {
-  //   this.task.isDone = !this.task.isDone;
-  //   dataService.save();
-  //   this.div.classList.toggle("completed");
-  //   this.taskActiveTask.drawCategoryTask();
-  // }
 
   toArchive(element) {
     this.task.isArchived = !this.task.isArchived;
@@ -103,7 +92,7 @@ export class TaskView {
     modal.style.display = "flex";
 
     modalName.value = text;
-    modalDate.value = date;
+    modalDate.value = date[date.length - 1];
 
     btn.addEventListener("click", () => {
       this.task.category = modalCategory.value;
