@@ -1,10 +1,11 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addNote } from "./actions";
 import { NewNoteInput } from "./NewNoteInput";
 import { NoteState } from "./noteReducer";
 import { noteObj } from "./NewNoteInput";
+import { Buttons } from "./buttons";
 
 import "./App.css";
 
@@ -18,6 +19,9 @@ function App() {
     dispatch(addNote(note));
   };
 
+  const archiveHandler: any = (event: ChangeEvent<HTMLInputElement>) => {
+        
+  }
   return (
     <>
       <div className="task titles">
@@ -27,6 +31,7 @@ function App() {
         <span>Date</span>
       </div>
 
+      
       {notes.map((note) => {
         return (
           <div key={note.timeCreate} className="task">
@@ -34,6 +39,7 @@ function App() {
             <span>{note.timeCreate}</span>
             <span>{note.text}</span>
             <span>{note.date}</span>
+            <Buttons props ={archiveHandler}/>
           </div>
         );
       })}

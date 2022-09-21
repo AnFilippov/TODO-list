@@ -43,6 +43,11 @@ export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
     } else {
       alert("enter task name");
     }
+    setNote({  category: "Task",
+    text: "",
+    isArchived: false,
+    timeCreate: new Date().toLocaleString(),
+    date: dateArr,});
 
     console.log(note);
   };
