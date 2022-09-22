@@ -14,11 +14,12 @@ export const noteReducer = (
 ) => {
   switch (action.type) {
     case "DELETE_NOTE": {
-      return {...state, notes: [...state.notes.filter((item) => item.text != action.payload]}
+      return {
+        ...state,
+        notes: state.notes.filter((note) => note.text !== action.payload),
+      };
     }
     default:
       return state;
   }
 };
-
-
