@@ -1,4 +1,4 @@
-import { noteObj } from "../components/NewNoteInput";
+import { noteObj } from "../components/NewNoteInput/NewNoteInput";
 
 export interface ActionAdd { type: "ADD_NOTE"; payload: noteObj };
 export interface ActionDel { type: "DELETE_NOTE"; payload: string };

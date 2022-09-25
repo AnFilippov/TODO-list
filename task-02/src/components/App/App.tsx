@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import uuid from 'react-uuid';
 import { useDispatch } from "react-redux";
-import { addNote } from "../action/actions";
-import { removeNote } from "../action/actions";
-import { removeArchiveNote } from "../action/actions"
-import { unArchiveNote } from "../action/actions"
-import { archiveNote } from "../action/actions";
-import { NewNoteInput } from "../components/NewNoteInput";
-import { noteObj } from "../components/NewNoteInput";
+import { addNote } from "../../action/actions";
+import { removeNote } from "../../action/actions";
+import { removeArchiveNote } from "../../action/actions"
+import { unArchiveNote } from "../../action/actions"
+import { archiveNote } from "../../action/actions";
+import { NewNoteInput } from "../NewNoteInput/NewNoteInput";
+import { noteObj } from "../NewNoteInput/NewNoteInput";
 import "./App.css";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import Task from "../components/task";
-import Archive from "../components/archive";
-import TotalInfo from "../components/totalInfo";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Task from "../Task/task";
+import Archive from "../Archive/Archive";
+import TotalInfo from "../TotalInfo/totalInfo";
+
 
 function App() {
   let arr = null;
@@ -59,14 +60,18 @@ function App() {
     setArch(false);
   }
 
+  let title: string = '';
   if (!arch) {
     arr = notes;
+    title = "All tasks"
   } else {
     arr = archNotes;
+    title = "Archive"
   }
 
   return (
     <>
+      <div className="title-page">{title}</div>
       <div className="task titles">
         <span>Category</span>
         <span>Created</span>
@@ -83,7 +88,7 @@ function App() {
           );
         })
       }
-      <NewNoteInput addNote={onAddNote} />
+      {!arch ? <NewNoteInput addNote={onAddNote} /> : <div></div>}
       <div className="input-panel">
         <button id="show-all-btn" onClick={showTasks}>All task</button>
         <button id="show-archived-btn" onClick={showArchive}>Archived task</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { noteObj } from './NewNoteInput'
+import { noteObj } from '../NewNoteInput/NewNoteInput'
 
 export interface ArchTask {
   note: noteObj;
@@ -16,8 +16,8 @@ const Archive: React.FC<ArchTask> = ({ note, unArchive, delArchNote }) => {
       <span>{note.timeCreate}</span>
       <span>{note.text}</span>
       <span>{note.date}</span>
-      <button onClick={() => unArchive(note)}>unarchive</button>
-      <button onClick={() => delArchNote(note)}>delete</button>
+      <button className="btnTask" onClick={() => unArchive(note)}>unarchive</button>
+      <button className="btnTask" onClick={() => delArchNote(note)}>delete</button>
     </div>
   )
 }

@@ -2,9 +2,8 @@
   padding: 50px;
 }
 
-.title-tasks {
-  text-align: center;
-  font-size: 26px;
+.titles {
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -21,13 +20,12 @@
 .input-panel {
   width: 100%;
   margin: 8px 0;
-  padding: 2px;
-}
+  }
 
-.input-panel {
-  width: 100%;
-  margin: 8px 0;
-  padding: 2px;
+.input-panel input {
+  height: 23px !important;
+  padding: 0;
+  margin: 0 5px 0 0;
 }
 
 .input-panel button {
@@ -35,10 +33,6 @@
   width: 10%;
 }
 
-.input-panel input {
-  height: 23px;
-  padding-left: 4px;
-}
 
 #task-name-input {
   width: 500px;
@@ -46,6 +40,24 @@
 
 #task-category-input {
   height: 27px;
+  margin-right: 5px;
 }
 
 
+.title-page {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.total {
+  margin-top: 50px;
+}
+
+.btnTask {
+  margin-right: 5px;
+}
+
+#show-all-btn {
+  margin-right: 5px;
+}

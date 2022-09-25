@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { noteObj } from './NewNoteInput'
+import { noteObj } from '../NewNoteInput/NewNoteInput'
 
 export interface NewTask {
   note: noteObj;
@@ -16,8 +16,8 @@ const Task: React.FC<NewTask> = ({ note, toArchive, delNote }) => {
       <span>{note.timeCreate}</span>
       <span>{note.text}</span>
       <span>{note.date}</span>
-      <button onClick={() => toArchive(note)}>archive</button>
-      <button onClick={() => delNote(note)}>delete</button>
+      <button className="btnTask" onClick={() => toArchive(note)}>archive</button>
+      <button className="btnTask" onClick={() => delNote(note)}>delete</button>
     </div>
   )
 }

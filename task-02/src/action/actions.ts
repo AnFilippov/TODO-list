@@ -1,4 +1,4 @@
-import { noteObj } from "../components/NewNoteInput";
+import { noteObj } from "../components/NewNoteInput/NewNoteInput";
 import { Action, ActionTypes } from "../types/actionType";
 
 
