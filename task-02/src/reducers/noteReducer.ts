@@ -14,9 +14,9 @@ const noteReducer = (state = initialState, action: Action) => {
     case ActionTypes.UNARCHIVE_NOTE: {
       return { ...state, notes: [...state.notes, action.payload] };
     }
-    // case "ARCHIVED_NOTE": {
-    //   return { notes: state.notes.filter((note) => note.isArchived === true) };
-    // }
+    case ActionTypes.EDIT_NOTE: {
+      return { ...state, notesArch: state.notes.map((note) => note.id === action.payload.id ? { ...note, category: action.payload.category, text: action.payload.text } : note) };
+    }
     default:
       return state;
   }

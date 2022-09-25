@@ -3,6 +3,7 @@ import uuid from 'react-uuid';
 import { useDispatch } from "react-redux";
 import { addNote } from "../../action/actions";
 import { removeNote } from "../../action/actions";
+import { editNote } from "../../action/actions";
 import { removeArchiveNote } from "../../action/actions"
 import { unArchiveNote } from "../../action/actions"
 import { archiveNote } from "../../action/actions";
@@ -13,11 +14,21 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Task from "../Task/task";
 import Archive from "../Archive/Archive";
 import TotalInfo from "../TotalInfo/totalInfo";
+import Modal from "../Modal/Modal";
 
 
 function App() {
   let arr = null;
-  const [arch, setArch] = useState(false)
+  const [arch, setArch] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
+  const [noteEdit, setEditNote] = useState<noteObj>({
+    id: uuid(),
+    category: "",
+    text: "",
+    isArchived: false,
+    timeCreate: '',
+    date: [],
+  });
 
   const notes = useTypedSelector(
     (state) => state.add.notes
@@ -26,7 +37,6 @@ function App() {
   const archNotes = useTypedSelector(
     (state) => state.arch.notesArch
   );
-
 
   const dispatch = useDispatch();
 
@@ -60,6 +70,10 @@ function App() {
     setArch(false);
   }
 
+  const editTask = (note: noteObj) => {
+    dispatch(editNote(note));
+  };
+
   let title: string = '';
   if (!arch) {
     arr = notes;
@@ -83,7 +97,7 @@ function App() {
         arr.map((note) => {
           return (
             !arch ?
-              <Task key={uuid()} note={note} toArchive={toArchive} delNote={delNote} /> :
+              <Task key={uuid()} note={note} toArchive={toArchive} delNote={delNote} setActive={setModalActive} setEditNote={setEditNote} /> :
               <Archive key={uuid()} note={note} unArchive={unArchive} delArchNote={delArchNote} />
           );
         })
@@ -94,6 +108,7 @@ function App() {
         <button id="show-archived-btn" onClick={showArchive}>Archived task</button>
       </div>
       <TotalInfo notes={notes} archNotes={archNotes} />
+      <Modal active={modalActive} setActive={setModalActive} noteEdit={noteEdit} />
     </>
   );
 }

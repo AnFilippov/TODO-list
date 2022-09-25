@@ -15,14 +15,14 @@ export interface NewNoteInputProps {
 }
 
 export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
-  let dateArr: any = [];
+  // let dateArr: any = [];
   const [note, setNote] = useState<noteObj>({
     id: uuid(),
     category: "Task",
     text: "",
     isArchived: false,
     timeCreate: new Date().toLocaleString(),
-    date: dateArr,
+    date: [],
   });
 
   const updateNote = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,8 +35,8 @@ export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
   };
 
   const updateDate = (event: ChangeEvent<HTMLInputElement>) => {
-    dateArr.push(event.target.value);
-    setNote((note) => ({ ...note, date: dateArr }));
+    note.date.push(event.target.value);
+    setNote((note) => ({ ...note, date: note.date }));
   };
 
   const addNoteClick = () => {
@@ -52,7 +52,7 @@ export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
       text: "",
       isArchived: false,
       timeCreate: new Date().toLocaleString(),
-      date: dateArr,
+      date: [],
     });
   };
 
@@ -81,7 +81,7 @@ export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
           id="task-date-input"
           name="date"
           onChange={updateDate}
-          value={note.date[dateArr.length - 1]}
+          value={note.date[note.date.length - 1] || ''}
         />
         <button onClick={addNoteClick}>Create task</button>
       </div>

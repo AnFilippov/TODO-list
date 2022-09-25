@@ -29,5 +29,9 @@ export const unArchiveNote = (note: noteObj): Action => ({
 
 export const archivedNote = (): Action => ({
   type: ActionTypes.ARCHIVED_NOTE
+});
 
+export const editNote = (note: noteObj): Action => ({
+  type: ActionTypes.EDIT_NOTE,
+  payload: note,
 });
