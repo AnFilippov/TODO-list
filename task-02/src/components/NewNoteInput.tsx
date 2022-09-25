@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent } from "react";
+import uuid from 'react-uuid';
 
 export interface noteObj {
+  id: any;
   category: string;
   text: string;
   isArchived: boolean;
@@ -15,6 +17,7 @@ export interface NewNoteInputProps {
 export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
   let dateArr: any = [];
   const [note, setNote] = useState<noteObj>({
+    id: uuid(),
     category: "Task",
     text: "",
     isArchived: false,
@@ -43,18 +46,19 @@ export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
     } else {
       alert("enter task name");
     }
-    setNote({  category: "Task",
-    text: "",
-    isArchived: false,
-    timeCreate: new Date().toLocaleString(),
-    date: dateArr,});
-
-    console.log(note);
+    setNote({
+      id: uuid(),
+      category: "Task",
+      text: "",
+      isArchived: false,
+      timeCreate: new Date().toLocaleString(),
+      date: dateArr,
+    });
   };
 
   return (
     <div>
-      <div className="input-panel">
+      <div className="input-panel task-create">
         <select
           id="task-category-input"
           name="category"
@@ -80,10 +84,6 @@ export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
           value={note.date[dateArr.length - 1]}
         />
         <button onClick={addNoteClick}>Create task</button>
-        <div className="input-panel">
-          <button id="show-all-btn">All task</button>
-          <button id="show-archived-btn">Archived task</button>
-        </div>
       </div>
     </div>
   );
