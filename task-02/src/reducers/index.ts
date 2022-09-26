@@ -3,9 +3,9 @@ import { combineReducers } from "redux";
 import archReducer from "./archReducer";
 import noteReducer from "./noteReducer";
 
-export const rootReduser = combineReducers({
+export const rootReducer = combineReducers({
 	add: noteReducer,
-	arch: archReducer
+	arch: archReducer,
 });
 
-export type RootState = ReturnType<typeof rootReduser>;
+export type RootState = ReturnType<typeof rootReducer>;

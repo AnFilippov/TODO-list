@@ -16,8 +16,8 @@ const Archive: React.FC<ArchTask> = ({ note, unArchive, delArchNote }) => {
       <span>{note.timeCreate}</span>
       <span>{note.text}</span>
       <span>{note.date}</span>
-      <button className="btnTask" onClick={() => unArchive(note)}>unarchive</button>
-      <button className="btnTask" onClick={() => delArchNote(note)}>delete</button>
+      <button className="btn-task" onClick={() => unArchive(note)}>unarchive</button>
+      <button className="btn-task" onClick={() => delArchNote(note)}>delete</button>
     </div>
   )
 }

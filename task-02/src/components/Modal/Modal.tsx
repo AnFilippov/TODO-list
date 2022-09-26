@@ -7,12 +7,12 @@ export interface Mod {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   noteEdit: noteObj;
-  editNote(note: noteObj): void;
+  editTask(note: noteObj): void;
 }
 
 const Modal: React.FC<Mod> = (props) => {
 
-  const { active, setActive, noteEdit, editNote } = props;
+  const { active, setActive, noteEdit, editTask } = props;
 
   const [note, setNote] = useState<noteObj>({
     id: "",
@@ -25,7 +25,6 @@ const Modal: React.FC<Mod> = (props) => {
 
 
   useEffect(() => { setNote(noteEdit) }, [noteEdit]);
-
 
   const updateNote = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -41,11 +40,9 @@ const Modal: React.FC<Mod> = (props) => {
     setNote((note) => ({ ...note, date: note.date }));
   };
 
-  const addNoteClick = () => {
-
-    // setNote((note) => ({ ...note, timeCreate: new Date().toLocaleString() }));
-    // addNote(note);
-
+  const editNoteClick = () => {
+    editTask(note);
+    setActive(false);
     setNote({
       id: uuid(),
       category: "Task",
@@ -60,6 +57,8 @@ const Modal: React.FC<Mod> = (props) => {
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
       <div className="modal-body" onClick={e => e.stopPropagation()}>
         <div>
+          <div className="close" onClick={() => setActive(false)}>&times;</div>
+          <h2>Edit task</h2>
           <div className="input-panel task-create">
             <select
               id="task-category-input"
@@ -85,7 +84,7 @@ const Modal: React.FC<Mod> = (props) => {
               onChange={updateDate}
               value={note.date[note.date.length - 1] || ''}
             />
-            <button onClick={addNoteClick}>Save</button>
+            <button onClick={editNoteClick}>Save</button>
           </div>
         </div>
       </div>

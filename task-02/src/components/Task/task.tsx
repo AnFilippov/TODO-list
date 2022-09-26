@@ -22,10 +22,10 @@ const Task: React.FC<NewTask> = ({ note, toArchive, delNote, setActive, setEditN
       <span>{note.category}</span>
       <span>{note.timeCreate}</span>
       <span>{note.text}</span>
-      <span>{note.date}</span>
-      <button className="btnTask" onClick={() => editHandle(note)}>edit</button>
-      <button className="btnTask" onClick={() => toArchive(note)}>archive</button>
-      <button className="btnTask" onClick={() => delNote(note)}>delete</button>
+      <span>{` ` + note.date}</span>
+      <button className="btn-task" onClick={() => editHandle(note)}>edit</button>
+      <button className="btn-task" onClick={() => toArchive(note)}>archive</button>
+      <button className="btn-task" onClick={() => delNote(note)}>delete</button>
     </div>
   )
 }

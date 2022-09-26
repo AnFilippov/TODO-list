@@ -108,7 +108,7 @@ function App() {
         <button id="show-archived-btn" onClick={showArchive}>Archived task</button>
       </div>
       <TotalInfo notes={notes} archNotes={archNotes} />
-      <Modal active={modalActive} setActive={setModalActive} noteEdit={noteEdit} />
+      <Modal active={modalActive} setActive={setModalActive} noteEdit={noteEdit} editTask={editTask} />
     </>
   );
 }

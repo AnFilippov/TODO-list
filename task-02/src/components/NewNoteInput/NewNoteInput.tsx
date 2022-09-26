@@ -15,7 +15,6 @@ export interface NewNoteInputProps {
 }
 
 export const NewNoteInput: React.FC<NewNoteInputProps> = ({ addNote }) => {
-  // let dateArr: any = [];
   const [note, setNote] = useState<noteObj>({
     id: uuid(),
     category: "Task",

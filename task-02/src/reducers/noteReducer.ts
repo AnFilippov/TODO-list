@@ -15,7 +15,7 @@ const noteReducer = (state = initialState, action: Action) => {
       return { ...state, notes: [...state.notes, action.payload] };
     }
     case ActionTypes.EDIT_NOTE: {
-      return { ...state, notesArch: state.notes.map((note) => note.id === action.payload.id ? { ...note, category: action.payload.category, text: action.payload.text } : note) };
+      return { ...state, notes: state.notes.map((note) => note.id === action.payload.id ? { ...note, category: action.payload.category, text: action.payload.text } : note) };
     }
     default:
       return state;
