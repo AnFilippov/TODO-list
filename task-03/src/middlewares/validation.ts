@@ -7,8 +7,8 @@ export const validation =
 		const body = req.body;
 
 		try {
-			await schema.validate(body);
-			next();
+			const v = await schema.validate(body);
+			console.log(v);
 			return next();
 		} catch (error) {
 			next(error);

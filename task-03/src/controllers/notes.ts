@@ -4,14 +4,7 @@ import * as yup from "yup";
 import { validation } from "../middlewares/validation";
 import { noteSchema } from "../validation/noteSchema";
 
-interface Note extends yup.InferType<typeof noteSchema> {
-	id: any;
-	category: string;
-	text: string;
-	isArchive: boolean;
-	timeCreate: any;
-	date: any[];
-}
+interface Note extends yup.InferType<typeof noteSchema> {}
 
 const getNotes = async (req: Request, res: Response, next: NextFunction) => {
 	try {
@@ -45,20 +38,11 @@ const getNote = async (req: Request, res: Response, next: NextFunction) => {
 const updateNote = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		let id: string = req.params.id;
-
-		let text: string = req.body.text ?? null;
-		let category: string = req.body.category ?? null;
-		let isArchive: boolean = req.body.isArchive ?? null;
-		let date: any[] = req.body.date ?? null;
-
 		let response: AxiosResponse = await axios.patch(
 			`https://6332b061a54a0e83d25613c4.mockapi.io/notes/${id}`,
 
 			{
-				...(text && { text }),
-				...(category && { category }),
-				...(isArchive && { isArchive }),
-				...(date && { date }),
+				...req.body,
 			},
 		);
 
@@ -99,7 +83,7 @@ const addNote = async (req: Request, res: Response, next: NextFunction) => {
 				category,
 				text,
 				isArchive: false,
-				timeCreate: new Date().toLocaleString(),
+				timeCreate,
 				date: [],
 			},
 		);

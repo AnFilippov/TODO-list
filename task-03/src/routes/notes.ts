@@ -9,6 +9,6 @@ router.get("/notes", controller.getNotes);
 router.get("/notes/:id", controller.getNote);
 router.patch("/notes/:id", validation(noteSchema), controller.updateNote);
 router.delete("/notes/:id", controller.deleteNote);
-router.post("/notes", controller.addNote);
+router.post("/notes", validation(noteSchema), controller.addNote);
 
 export = router;
