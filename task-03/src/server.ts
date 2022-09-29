@@ -1,8 +1,7 @@
 import http from "http";
 import express, { Express } from "express";
 import morgan from "morgan";
-import routeNode from "./routes/notes";
-import routeStats from "./routes/stats";
+import routeNote from "./routes/notes";
 
 const router: Express = express();
 
@@ -27,8 +26,7 @@ router.use((req, res, next) => {
 	next();
 });
 
-router.use("/", routeNode);
-router.use("/", routeStats);
+router.use("/", routeNote);
 
 router.use((req, res, next) => {
 	const error = new Error("not found");
