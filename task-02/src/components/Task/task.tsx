@@ -12,6 +12,9 @@ export interface NewTask {
 
 const Task: React.FC<NewTask> = ({ note, toArchive, delNote, setActive, setEditNote }) => {
 
+  let str: string = note.text;
+  let resDate: any = str.match(/\d{2}(\D)\d{2}\1\d{4}/g);
+
   const editHandle = (note: noteObj) => {
     setActive(true);
     setEditNote(note);
@@ -22,7 +25,7 @@ const Task: React.FC<NewTask> = ({ note, toArchive, delNote, setActive, setEditN
       <span>{note.category}</span>
       <span>{note.timeCreate}</span>
       <span>{note.text}</span>
-      <span>{` ` + note.date}</span>
+      <span>{resDate.join(", ")}</span>
       <button className="btn-task" onClick={() => editHandle(note)}>edit</button>
       <button className="btn-task" onClick={() => toArchive(note)}>archive</button>
       <button className="btn-task" onClick={() => delNote(note)}>delete</button>
