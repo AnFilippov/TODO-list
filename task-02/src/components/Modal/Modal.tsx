@@ -20,8 +20,8 @@ const Modal: React.FC<Mod> = (props) => {
     text: "",
     isArchived: false,
     timeCreate: '',
-    date: [],
-  });
+    date: " ",
+  })
 
 
   useEffect(() => { setNote(noteEdit) }, [noteEdit]);
@@ -35,11 +35,6 @@ const Modal: React.FC<Mod> = (props) => {
     setNote((note) => ({ ...note, category: event.target.value }));
   };
 
-  const updateDate = (event: ChangeEvent<HTMLInputElement>) => {
-    note.date.push(event.target.value);
-    setNote((note) => ({ ...note, date: note.date }));
-  };
-
   const editNoteClick = () => {
     editTask(note);
     setActive(false);
@@ -49,7 +44,7 @@ const Modal: React.FC<Mod> = (props) => {
       text: "",
       isArchived: false,
       timeCreate: new Date().toLocaleString(),
-      date: [],
+      date: " ",
     });
   };
 
@@ -76,13 +71,6 @@ const Modal: React.FC<Mod> = (props) => {
               name="text"
               placeholder="Note"
               onChange={updateNote}
-            />
-            <input
-              type="date"
-              id="task-date-input"
-              name="date"
-              onChange={updateDate}
-              value={note.date[note.date.length - 1] || ''}
             />
             <button onClick={editNoteClick}>Save</button>
           </div>

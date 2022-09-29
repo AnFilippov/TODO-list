@@ -27,7 +27,7 @@ function App() {
     text: "",
     isArchived: false,
     timeCreate: '',
-    date: [],
+    date: " ",
   });
 
   const notes = useTypedSelector(
